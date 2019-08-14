@@ -17,7 +17,4 @@ web scraper program using Ruby, to check when my MA course is finally listed on 
 
 # How to use the chrontab
 
-To update
-```
-$ whenever --update-crontab
-```
+[Click here](https://github.com/javan/whenever)
