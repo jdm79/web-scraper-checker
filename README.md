@@ -15,3 +15,9 @@ web scraper program using Ruby, to check when my MA course is finally listed on 
 * bundle install the gems
 * run the program: $ ruby main.rb 
 
+# How to use the chrontab
+
+To update
+```
+$ whenever --update-crontab
+```
