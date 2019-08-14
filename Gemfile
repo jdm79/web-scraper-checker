@@ -5,4 +5,4 @@ source 'https://rubygems.org'
 gem 'httparty'
 gem 'nokogiri'
 gem 'nikkou'
-gem 'whenever'
+gem 'whenever', require: false

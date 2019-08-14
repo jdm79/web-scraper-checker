@@ -6,19 +6,13 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    ansi (1.5.0)
-    ast (2.4.0)
     chronic (0.10.2)
     concurrent-ruby (1.1.5)
-    diff-lcs (1.3)
-    docile (1.3.2)
     httparty (0.17.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    jaro_winkler (1.5.3)
-    json (2.2.0)
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0331)
@@ -31,46 +25,9 @@ GEM
       tzinfo
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
-    parallel (1.17.0)
-    parser (2.6.3.0)
-      ast (~> 2.4.0)
-    rainbow (3.0.0)
-    rspec (3.8.0)
-      rspec-core (~> 3.8.0)
-      rspec-expectations (~> 3.8.0)
-      rspec-mocks (~> 3.8.0)
-    rspec-core (3.8.2)
-      rspec-support (~> 3.8.0)
-    rspec-expectations (3.8.4)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.8.0)
-    rspec-mocks (3.8.1)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.8.0)
-    rspec-support (3.8.2)
-    rubocop (0.74.0)
-      jaro_winkler (~> 1.5.1)
-      parallel (~> 1.10)
-      parser (>= 2.6)
-      rainbow (>= 2.2.2, < 4.0)
-      ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 1.7)
-    ruby-progressbar (1.10.1)
-    simplecov (0.17.0)
-      docile (~> 1.1)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
-    simplecov-console (0.5.0)
-      ansi
-      simplecov
-      terminal-table
-    simplecov-html (0.10.2)
-    terminal-table (1.8.0)
-      unicode-display_width (~> 1.1, >= 1.1.1)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    unicode-display_width (1.6.0)
     whenever (1.0.0)
       chronic (>= 0.6.3)
 
@@ -79,12 +36,8 @@ PLATFORMS
 
 DEPENDENCIES
   httparty
-  json
   nikkou
   nokogiri
-  rspec
-  rubocop
-  simplecov-console
   whenever
 
 BUNDLED WITH
