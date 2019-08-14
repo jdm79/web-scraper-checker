@@ -23,7 +23,7 @@ def fetch(url)
 end
 
 def printer
-  inter = 'MA International Journalism'
+  inter = 'MA Interactive Journalism'
   invest = 'MA Investigative Journalism'
   bool = true
   courses = "There are #{@subjects.length} journalism subjects listed:"
