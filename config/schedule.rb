@@ -13,13 +13,8 @@ set :output, "~/.cron_log.log"
 #   # rake "some:great:rake:task"
 # end
 
-every 10.minutes, mailto: 'james.malvern@gmail.com'  do
-  command "ruby ~/Ruby/main.rb"
+every 2.hours do
+  command "ruby ~/Ruby/main.rb", mailto: 'james.malvern79@gmail.com'
 end
-
-#
-# every 4.days do
-#   runner "AnotherModel.prune_old_records"
-# end
 
 # Learn more: http://github.com/javan/whenever
