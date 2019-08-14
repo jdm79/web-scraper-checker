@@ -23,12 +23,21 @@ def fetch(url)
 end
 
 def printer
+  inter = 'MA International Journalism'
+  invest = 'MA Investigative Journalism'
+  bool = true
+  courses = "There are #{@subjects.length} journalism subjects listed:"
+
   puts ""
   puts "Time: #{Time.now.utc.iso8601}"
-  puts "There are #{@subjects.length} journalism subjects listed"
-  puts "------------------------------------------------------"
+  puts "-----------------------------"
+  puts courses
   @subjects.each do |subject|
-      puts subject
+    if subject == inter
+      puts "EUREKA! #{inter} is finally listed!" 
+    elsif subject == invest
+      puts "EUREKA! #{invest} is finally listed!" 
+    end
   end
 end
 
