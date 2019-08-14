@@ -24,6 +24,7 @@ end
 
 def printer
   puts ""
+  puts "Time: #{Time.now.utc.iso8601}"
   puts "There are #{@subjects.length} journalism subjects listed"
   puts "------------------------------------------------------"
   @subjects.each do |subject|
