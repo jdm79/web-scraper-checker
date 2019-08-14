@@ -5,13 +5,18 @@
 
 # Example:
 #
-set :output, "/path/to/my/cron_log.log"
+set :output, "~/.cron_log.log"
 #
-every 1.hours do
-  command "ruby main.rb"
-  # runner "MyModel.some_method"
-  # rake "some:great:rake:task"
+# every 1.hours do
+#   command "ruby main.rb"
+#   # runner "MyModel.some_method"
+#   # rake "some:great:rake:task"
+# end
+
+every 10.minutes, mailto: 'james.malvern@gmail.com'  do
+  command "ruby ~/Ruby/main.rb"
 end
+
 #
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
