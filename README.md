@@ -1,4 +1,4 @@
-# Web-scraper-checker
+# web-scraper-checker
 
 web scraper program using Ruby, to check when my MA course is finally listed on their website so I can see when everything happens etc.
 
