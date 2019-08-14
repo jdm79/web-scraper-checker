@@ -3,10 +3,6 @@
 source 'https://rubygems.org'
 
 gem 'httparty'
-gem 'json'
 gem 'nokogiri'
-gem 'rspec'
-gem 'rubocop'
-gem 'simplecov-console'
 gem 'nikkou'
 gem 'whenever'
