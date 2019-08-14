@@ -8,6 +8,7 @@ GEM
       tzinfo (~> 1.1)
     ansi (1.5.0)
     ast (2.4.0)
+    chronic (0.10.2)
     concurrent-ruby (1.1.5)
     diff-lcs (1.3)
     docile (1.3.2)
@@ -70,6 +71,8 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.0)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -82,6 +85,7 @@ DEPENDENCIES
   rspec
   rubocop
   simplecov-console
+  whenever
 
 BUNDLED WITH
    2.0.2
