@@ -11,7 +11,8 @@ require 'nikkou'
 def scraper
   fetch(@url1)
   fetch(@url2)
-  printer
+  checker
+  # printer
 end
 
 def fetch(url)
@@ -19,6 +20,14 @@ def fetch(url)
   parsed_page = Nokogiri::HTML(unparsed_page)
   parsed_page.css('div.induction-timetable-finder h2').text_includes('Journalism').map do |subject|
     @subjects << subject.text
+  end
+end
+
+def checker
+  if @subjects.length > 3
+    printer
+  else
+    puts "No change"
   end
 end
 
