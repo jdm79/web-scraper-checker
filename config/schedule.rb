@@ -13,7 +13,7 @@ set :output, "~/.cron_log.log"
 #   # rake "some:great:rake:task"
 # end
 
-every 2.hours do
+every 3.hours do
   command "ruby ~/Ruby/main.rb", mailto: 'james.malvern79@gmail.com'
 end
 
