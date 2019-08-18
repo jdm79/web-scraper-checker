@@ -6,3 +6,5 @@ gem 'httparty'
 gem 'nokogiri'
 gem 'nikkou'
 gem 'whenever', require: false
+gem 'twilio-ruby'
+gem 'dotenv'
