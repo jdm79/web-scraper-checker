@@ -58,16 +58,11 @@ end
 
 
 def sms
-  twilio_sid  = ENV['TWILIO_SID']
-  twilio_token = ENV['TWILIO_TOKEN']
-  twilio_no = ENV['TWILIO_NO']
-  my_no = ENV['MY_NO']
-  account_sid = twilio_sid
-  auth_token = twilio_token
+  from = ENV['TWILIO_NO']
+  to = ENV['MY_NO']
+  account_sid = ENV['TWILIO_SID']
+  auth_token = ENV['TWILIO_TOKEN']
   client = Twilio::REST::Client.new(account_sid, auth_token)
-
-  from = twilio_no
-  to = my_no
 
   client.messages.create(
   from: from,
