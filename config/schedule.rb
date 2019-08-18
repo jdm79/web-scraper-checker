@@ -14,7 +14,7 @@ set :output, "~/.cron_log.log"
 # end
 
 every 4.hours do
-  command "ruby ~/Ruby/main.rb", mailto: 'james.malvern79@gmail.com'
+  command "ruby ~/Ruby/main.rb"
 end
 
 # Learn more: http://github.com/javan/whenever
