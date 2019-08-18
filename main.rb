@@ -11,6 +11,7 @@ require 'twilio-ruby'
 @url2 = "https://studenthub.city.ac.uk/new-students/induction-timetables?p=17"
 @message = ""
 @subj_total = ""
+@and = ""
 
 def scraper
   fetch(@url1)
@@ -25,7 +26,7 @@ def fetch(url)
   unparsed_page = HTTParty.get(url)
   parsed_page = Nokogiri::HTML(unparsed_page)
   @subj_total = parsed_page.css('div.induction-timetable-finder__results__count').text.slice!(0..1)
-  parsed_page.css('div.induction-timetable-finder h2').text_includes('Journalism').map do |subject|
+  @and = parsed_page.css('div.induction-timetable-finder h2').text_includes('Journalism').map do |subject|
     @subjects << subject.text
   end
 end
@@ -34,27 +35,24 @@ def checker
   if @subjects.length > 3
     printer
   else
-    @message = "No change. #{@subj_total} subjects listed."
+    puts @message = "No change. #{@subj_total} subjects listed on the website."
   end
 end
 
 def printer
   inter = 'MA Interactive Journalism'
   invest = 'MA Investigative Journalism'
-  bool = true
-  @message = "There are #{@subj_total} journalism subjects listed. "
+  ours = []
 
-  puts ""
-  puts "Time: #{Time.now.utc.iso8601}"
-  puts "-----------------------------"
-  puts @message
   @subjects.each do |subject|
     if subject == inter
-      @message = "EUREKA! #{inter} is finally listed!" 
+      ours << subject
     elsif subject == invest
-      @message = "EUREKA! #{invest} is finally listed!" 
+      ours << subject
     end
   end
+  puts @message = "#{Time.now.utc.iso8601}. There are #{@subjects.length} journalism subjects listed. 
+  #{if ours.length > 0; ours end}"
 end
 
 
