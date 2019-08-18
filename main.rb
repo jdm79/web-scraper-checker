@@ -1,19 +1,24 @@
+require 'dotenv/load'
 require 'nokogiri'
 require 'json'
 require 'httparty'
 require 'nikkou'
+require 'twilio-ruby'
 
 
 @subjects = []
 @url1 = "https://studenthub.city.ac.uk/new-students/induction-timetables"
 @url2 = "https://studenthub.city.ac.uk/new-students/induction-timetables?p=17"
+@message = ""
 
 def scraper
   fetch(@url1)
   fetch(@url2)
   checker
-  # printer
+  sms
 end
+
+private
 
 def fetch(url)
   unparsed_page = HTTParty.get(url)
@@ -27,7 +32,8 @@ def checker
   if @subjects.length > 3
     printer
   else
-    puts "No change"
+    @message = "No change"
+    puts @message
   end
 end
 
@@ -35,21 +41,43 @@ def printer
   inter = 'MA Interactive Journalism'
   invest = 'MA Investigative Journalism'
   bool = true
-  courses = "There are #{@subjects.length} journalism subjects listed:"
+  @message = "There are #{@subjects.length} journalism subjects listed. "
 
   puts ""
   puts "Time: #{Time.now.utc.iso8601}"
   puts "-----------------------------"
-  puts courses
+  puts @message
   @subjects.each do |subject|
     if subject == inter
-      puts "EUREKA! #{inter} is finally listed!" 
+      @message = "EUREKA! #{inter} is finally listed!" 
     elsif subject == invest
-      puts "EUREKA! #{invest} is finally listed!" 
+      @message = "EUREKA! #{invest} is finally listed!" 
     end
   end
 end
 
+
+def sms
+  twilio_sid  = ENV['TWILIO_SID']
+  twilio_token = ENV['TWILIO_TOKEN']
+  twilio_no = ENV['TWILIO_NO']
+  my_no = ENV['MY_NO']
+  account_sid = twilio_sid
+  auth_token = twilio_token
+  client = Twilio::REST::Client.new(account_sid, auth_token)
+
+  from = twilio_no
+  to = my_no
+
+  client.messages.create(
+  from: from,
+  to: to,
+  body: @message
+  )
+end
+
 scraper
+
+
 
 
