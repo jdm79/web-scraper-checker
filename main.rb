@@ -17,7 +17,6 @@ def scraper
   fetch(@url1)
   fetch(@url2)
   checker
-  sms
 end
 
 private
@@ -53,6 +52,7 @@ def printer
   end
   puts @message = "#{Time.now.utc.iso8601}. There are #{@subjects.length} journalism subjects listed. 
   #{if ours.length > 0; ours end}"
+  sms
 end
 
 
