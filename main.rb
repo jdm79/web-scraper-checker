@@ -35,7 +35,7 @@ def checker
   if @subjects.length > 3
     printer
   else
-    puts @message = "No change. #{@subj_total} subjects listed on the website."
+    puts "No change. #{@subj_total} subjects listed on the website."
   end
 end
 
