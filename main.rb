@@ -13,15 +13,15 @@ require 'twilio-ruby'
 @subj_total = ""
 @and = ""
 
-def scraper
-  fetch(@url1)
-  fetch(@url2)
+def main
+  parser(@url1)
+  parser(@url2)
   checker
 end
 
 private
 
-def fetch(url)
+def parser(url)
   unparsed_page = HTTParty.get(url)
   parsed_page = Nokogiri::HTML(unparsed_page)
   @subj_total = parsed_page.css('div.induction-timetable-finder__results__count').text.slice!(0..1)
@@ -70,7 +70,7 @@ def sms
   )
 end
 
-scraper
+main
 
 
 
