@@ -4,6 +4,8 @@ web scraper program using Ruby, to check when my MA course is finally listed on 
 
 this is mainly to get back into coding, to practise webscraping for my Interactive Journalism MA at City University, London working on data journalism.
 
+runs on a headless raspberry pi.
+
 # Stack
 
 * 'httparty' gem to scrape the html from the web
@@ -19,7 +21,7 @@ this is mainly to get back into coding, to practise webscraping for my Interacti
 * personalise (twilio account, website and tag to scrape, dotenv config etc)
 * run the program: $ ruby main.rb 
 
-# How to use the chrontab
+# How to use the cron job
 
 [Click here](https://github.com/javan/whenever)
 
