@@ -11,7 +11,6 @@ require 'twilio-ruby'
 @url2 = "https://studenthub.city.ac.uk/new-students/induction-timetables?p=17"
 @message = ""
 @subj_total = ""
-@and = ""
 
 def main
   parser(@url1)
@@ -25,7 +24,7 @@ def parser(url)
   unparsed_page = HTTParty.get(url)
   parsed_page = Nokogiri::HTML(unparsed_page)
   @subj_total = parsed_page.css('div.induction-timetable-finder__results__count').text.slice!(0..1)
-  @and = parsed_page.css('div.induction-timetable-finder h2').text_includes('Journalism').map do |subject|
+  parsed_page.css('div.induction-timetable-finder h2').text_includes('Journalism').map do |subject|
     @subjects << subject.text
   end
 end
