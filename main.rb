@@ -34,7 +34,7 @@ def checker
   if @subjects.length > 3
     printer
   else
-    puts "No change. #{@subj_total} subjects listed on the website."
+    puts "#{Time.now.utc.iso8601}. No change. #{@subj_total} subjects listed on the website."
   end
 end
 
