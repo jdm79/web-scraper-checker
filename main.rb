@@ -50,7 +50,8 @@ def printer
 
   if journalism_subjects.length > count
     sms
-    count = count + 1
+    # updates count to prevent further sms's unless a new journalism subject is listed
+    count = journalism_subjects
   end
 end
 
