@@ -13,8 +13,8 @@ set :output, "~/.cron_log.log"
 #   # rake "some:great:rake:task"
 # end
 
-every 4.hours do
-  command "ruby ~/Ruby/main.rb"
+every 30.minutes do
+  command "ruby ~/Ruby/scrape.rb", mailto: 'james.malvern@gmail.com'
 end
 
 # Learn more: http://github.com/javan/whenever
