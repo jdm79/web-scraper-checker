@@ -1,21 +1,28 @@
-require 'dotenv/load'
+# require 'dotenv/load'
 require 'nokogiri'
+require 'json'
 require 'json'
 require 'httparty'
 require 'nikkou'
 require 'twilio-ruby'
 
-
 @subjects = []
+# manually find the new pages for now, predicted url5 from previous pattern
 @url1 = "https://studenthub.city.ac.uk/new-students/induction-timetables"
 @url2 = "https://studenthub.city.ac.uk/new-students/induction-timetables?p=17"
+@url3 = "https://studenthub.city.ac.uk/new-students/induction-timetables?p=33"
+@url4 = "https://studenthub.city.ac.uk/new-students/induction-timetables?p=49"
+@url5 = "https://studenthub.city.ac.uk/new-students/induction-timetables?p=65"
 @message = ""
 @subj_total = ""
 
 def main
   parser(@url1)
   parser(@url2)
-  checker
+  parser(@url3)
+  parser(@url4)
+  parser(@url5)
+  printer
 end
 
 private
@@ -29,42 +36,33 @@ def parser(url)
   end
 end
 
-def checker
-  if @subjects.length > 3
-    printer
-  else
-    puts "#{Time.now.utc.iso8601}. No change. #{@subj_total} subjects listed on the website."
-  end
-end
-
 def printer
-  inter = 'MA Interactive Journalism'
-  invest = 'MA Investigative Journalism'
-  ours = []
+  count = 5
+  journalism_subjects = @subjects.uniq
+  @message = "There are #{journalism_subjects.length} journalism subjects listed: #{journalism_subjects}"
 
-  @subjects.each do |subject|
-    if subject == inter
-      ours << subject
-    elsif subject == invest
-      ours << subject
-    end
+  puts ""
+  puts "Time: #{Time.now.utc.iso8601}"
+  puts "-----------------------------"
+  journalism_subjects.each do |subject|
+    puts subject
   end
-  puts @message = "#{Time.now.utc.iso8601}. There are #{@subjects.length} journalism subjects listed. 
-  #{if ours.length > 0; ours end}"
-  sms
+
+  if journalism_subjects.length > count
+    sms
+    count = count + 1
+  end
 end
 
-
+# twilio sms code - add your own credentials
 def sms
-  from = ENV['TWILIO_NO']
-  to = ENV['MY_NO']
-  account_sid = ENV['TWILIO_SID']
-  auth_token = ENV['TWILIO_TOKEN']
+  account_sid = <your account sid>
+  auth_token = <your auth token>
   client = Twilio::REST::Client.new(account_sid, auth_token)
 
   client.messages.create(
-  from: from,
-  to: to,
+  from: <twilio number>,
+  to: <your number>,
   body: @message
   )
 end
