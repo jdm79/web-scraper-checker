@@ -37,6 +37,10 @@ def parser(url)
 end
 
 def printer
+  # count needs to be stored in a db as a dynamic number to prevent multiple sms alerts for same
+  # new course addition to list. want to update count to new number of courses listed
+  # count being manually updated right now whenever new alerts come through. 30 mins to update count
+  # else it sends another sms and so on
   count = 5
   journalism_subjects = @subjects.uniq
   @message = "There are #{journalism_subjects.length} journalism subjects listed: #{journalism_subjects}"
@@ -50,8 +54,6 @@ def printer
 
   if journalism_subjects.length > count
     sms
-    # updates count to prevent further sms's unless a new journalism subject is listed
-    count = journalism_subjects
   end
 end
 
