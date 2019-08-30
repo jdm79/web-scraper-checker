@@ -1,7 +1,6 @@
 # require 'dotenv/load'
 require 'nokogiri'
 require 'json'
-require 'json'
 require 'httparty'
 require 'nikkou'
 require 'twilio-ruby'
@@ -37,6 +36,7 @@ def parser(url)
 end
 
 def printer
+  # count is being updated manually and accordingly after each new sms, listing how many new courses listed 
   count = 5
   journalism_subjects = @subjects.uniq
   @message = "There are #{journalism_subjects.length} journalism subjects listed: #{journalism_subjects}"
@@ -52,8 +52,8 @@ def printer
 
   if journalism_subjects.length > count
     sms
-    # updates count to prevent further sms's unless a new journalism subject is listed
-    # this won't work - needs to be stored in a db. sqlite it!
+    # need to update count once sms has been sent, so program doesn't continue to send sms's
+    # best to do this with db - sqlite or postgres
     count = journalism_subjects
   end
 end
