@@ -7,21 +7,21 @@ require 'nikkou'
 require 'twilio-ruby'
 
 @subjects = []
-# manually find the new pages for now, predicted url5 from previous pattern
-@url1 = "https://studenthub.city.ac.uk/new-students/induction-timetables"
-@url2 = "https://studenthub.city.ac.uk/new-students/induction-timetables?p=17"
-@url3 = "https://studenthub.city.ac.uk/new-students/induction-timetables?p=33"
-@url4 = "https://studenthub.city.ac.uk/new-students/induction-timetables?p=49"
-@url5 = "https://studenthub.city.ac.uk/new-students/induction-timetables?p=65"
+@city_url = "https://studenthub.city.ac.uk/new-students/induction-timetables"
+@urls = [ @url1 = @city_url,
+          @url2 = "#{@city_url}?p=17",
+          @url3 = "#{@city_url}?p=33",
+          @url4 = "#{@city_url}?p=49",
+          @url5 = "#{@city_url}?p=65"
+        ]
 @message = ""
 @subj_total = ""
 
 def main
-  parser(@url1)
-  parser(@url2)
-  parser(@url3)
-  parser(@url4)
-  parser(@url5)
+  @urls.each do |url|
+    parser(url)
+  end
+
   printer
 end
 
@@ -37,10 +37,6 @@ def parser(url)
 end
 
 def printer
-  # count needs to be stored in a db as a dynamic number to prevent multiple sms alerts for same
-  # new course addition to list. want to update count to new number of courses listed
-  # count being manually updated right now whenever new alerts come through. 30 mins to update count
-  # else it sends another sms and so on
   count = 5
   journalism_subjects = @subjects.uniq
   @message = "There are #{journalism_subjects.length} journalism subjects listed: #{journalism_subjects}"
@@ -51,9 +47,14 @@ def printer
   journalism_subjects.each do |subject|
     puts subject
   end
+  puts "-----------------------------"
+  puts "The page says there are #{@subj_total} courses listed"
 
   if journalism_subjects.length > count
     sms
+    # updates count to prevent further sms's unless a new journalism subject is listed
+    # this won't work - needs to be stored in a db. sqlite it!
+    count = journalism_subjects
   end
 end
 
