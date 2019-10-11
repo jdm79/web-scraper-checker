@@ -4,8 +4,6 @@ web scraper program using Ruby, to check when my MA course is finally listed on 
 
 this is mainly to get back into coding, to practise webscraping for my Interactive Journalism MA at City University, London working on data journalism.
 
-runs on a headless raspberry pi.
-
 # Stack
 
 * 'httparty' gem to scrape the html from the web
