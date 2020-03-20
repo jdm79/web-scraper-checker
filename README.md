@@ -1,6 +1,6 @@
 # web-scraper-checker
 
-web scraper program using Ruby, to check when my MA course is finally listed on their website so I can see when everything happens etc. twilio code allows me to sms myself with updates.
+web scraper program using Ruby to check when my MA course is finally listed on their website so I can see when everything happens etc. twilio code allows me to sms myself with updates.
 
 this is mainly to get back into coding, to practise webscraping for my Interactive Journalism MA at City University, London working on data journalism.
 
