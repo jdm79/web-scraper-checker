@@ -8,6 +8,7 @@ GEM
       tzinfo (~> 1.1)
     chronic (0.10.2)
     concurrent-ruby (1.1.5)
+    dotenv (2.7.5)
     faraday (0.15.3)
       multipart-post (>= 1.2, < 3)
     httparty (0.17.0)
@@ -27,7 +28,7 @@ GEM
       activesupport
       nokogiri
       tzinfo
-    nokogiri (1.10.4)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     thread_safe (0.3.6)
     twilio-ruby (5.12.0)
@@ -43,6 +44,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   httparty
   nikkou
   nokogiri
